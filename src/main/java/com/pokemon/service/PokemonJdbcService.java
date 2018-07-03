@@ -1,4 +1,4 @@
-package com.pokemon.cache;
+package com.pokemon.service;
 import com.pokemon.config.JdbcConfig;
 import com.pokemon.dto.PokemonDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PokemonCache {
-    public List<PokemonDto> pokemonDtosList;
+public class PokemonJdbcService {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
     @PostConstruct
     public void methodInit() {
-        pokemonDtosList = new ArrayList<>();
+
+    }
+    public void addToPokemonTable(PokemonDto pokemonDto){
+        jdbcTemplate.update("INSERT INTO pokemons values (?,?,?,?,?)",
+                1,
+                pokemonDto.getName(),
+                        pokemonDto.getWeight(),
+                        pokemonDto.getSpeciesUrl(),
+                        pokemonDto.getSpeciesName());
 
 
 
+
+        //jdbcTemple...//insert into
     }
 
     //SIMPLE EXECUTE
