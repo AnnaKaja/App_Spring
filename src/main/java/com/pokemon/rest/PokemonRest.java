@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.List;
 @RestController
+
 public class PokemonRest {
 
     private PokemonService pokemonService;
@@ -26,23 +27,15 @@ public class PokemonRest {
     }
 
     @RequestMapping("/pokemon")
-    public PokemonDto getPokemon(@RequestParam(value="id") String id) throws IOException {
-        //SELECT DO BAZY CZY POKEMON O ID ISTNIEJE
-        PokemonDto pokemonDto1 = pokemonService.getPokemonById(id);
-        if(pokemonDto1 != null) return pokemonDto1;
+    public PokemonDto getPokemon(@RequestParam(value = "id") int id) throws IOException {
 
-        PokemonDto pokemonDto =  pokemonService.getPokemonDto(id);
-        pokemonService.addToDb(pokemonDto);
+        PokemonDto pokemonDto1 = pokemonService.getPokemonById(id);
+        if (pokemonDto1 != null) return pokemonDto1;
+
+        PokemonDto pokemonDto = pokemonService.getPokemonDto(id);
+        pokemonService.addToDb(pokemonDto, id);
         return pokemonDto;
 
-    }
-
-
-    @PostMapping("/addPokemon")
-    public ResponseEntity<String> addPokemon(@RequestBody PokemonDto pokemonDto) {
-
-        pokemonService.addToDb(pokemonDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/getAll")

@@ -30,9 +30,10 @@ public class PokemonJdbcService {
 
     }
 
-    public PokemonDto getById(String id) {
+    public PokemonDto getById(int id) {
+
         try {
-            jdbcTemplate.queryForObject("SELECT * FROM POKEMONS WHERE ID = " + id,
+           return jdbcTemplate.queryForObject("SELECT id, name, weight, speciesUrl, speciesName FROM POKEMONS WHERE ID = " + id,
                     (resultSet, i) -> {
                         PokemonDto pokemonDto = new PokemonDto();
                         pokemonDto.setId(resultSet.getInt("id"));
@@ -44,8 +45,8 @@ public class PokemonJdbcService {
                     });
         } catch (Exception e) {
 
+            //https://doc}s.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/data-access.html#jdbc
         }
         return null;
-        //https://docs.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/data-access.html#jdbc
     }
 }

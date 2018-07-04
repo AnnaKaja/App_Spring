@@ -18,4 +18,19 @@ public class PokemonServiceImplTest implements PokemonService {
     public PokemonDto getPokemonById(String id) {
         return null;
     }
+
+    @Override
+    public PokemonDto getPokemonDto(int id) {
+        return null;
+    }
+
+    @Override
+    public void addToDb(PokemonDto pokemonDto, int id) {
+
+    }
+
+    @Override
+    public PokemonDto getPokemonById(int id) {
+        return null;
+    }
 }

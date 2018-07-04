@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-
 @Service
 public class PokemonServiceImpl implements PokemonService {
 
@@ -25,7 +24,22 @@ public class PokemonServiceImpl implements PokemonService {
     ParseService parseService;
     PokemonJdbcService pokemonJdbcService;
 
-    public PokemonDto getPokemonDto(String id) throws IOException {
+    @Override
+    public PokemonDto getPokemonDto(String id) {
+        return null;
+    }
+
+    @Override
+    public void addToDb(PokemonDto pokemonDto) {
+
+    }
+
+    @Override
+    public PokemonDto getPokemonById(String id) {
+        return null;
+    }
+
+    public PokemonDto getPokemonDto(int id) throws IOException {
         CloseableHttpClient httpClient
                 = HttpClients.custom()
                 .setSSLHostnameVerifier(new NoopHostnameVerifier())
@@ -43,12 +57,14 @@ public class PokemonServiceImpl implements PokemonService {
     }
 
     @Override
-    public void addToDb(PokemonDto pokemonDto) {
-        pokemonJdbcService.addToPokemonTable(pokemonDto, 1);
+    public void addToDb(PokemonDto pokemonDto, int id) {
+        pokemonJdbcService.addToPokemonTable(pokemonDto, id);
+
     }
 
     @Override
-    public PokemonDto getPokemonById(String id) {
-        return null;
+    public PokemonDto getPokemonById(int id) {
+
+        return pokemonJdbcService.getById(id);
     }
 }
