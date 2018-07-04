@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Arrays;
 import java.util.Map;
 
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PokemonDto {
+    private int id;
     private String name;
     private String weight;
     private String speciesUrl;
@@ -22,7 +24,13 @@ public class PokemonDto {
     public PokemonDto() {
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -40,7 +48,8 @@ public class PokemonDto {
         this.weight = weight;
     }
 
-    public PokemonDto(String name, String weight) {
+    public PokemonDto(int id, String name, String weight) {
+        this.id = id;
         this.name = name;
         this.weight = weight;
 
@@ -77,9 +86,7 @@ public class PokemonDto {
                 ", speciesUrl='" + speciesUrl + '\'' +
                 ", speciesName='" + speciesName + '\'' +
                 ", abilities=" + Arrays.toString(abilities) +
-                ", statsDto=" + Arrays.toString(statsDto) +
                 '}';
-        //metoda to string
     }
-}
 
+}

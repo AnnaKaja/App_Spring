@@ -44,6 +44,11 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public void addToDb(PokemonDto pokemonDto) {
-        pokemonJdbcService.addToPokemonTable(pokemonDto);
+        pokemonJdbcService.addToPokemonTable(pokemonDto, 1);
+    }
+
+    @Override
+    public PokemonDto getPokemonById(String id) {
+        return null;
     }
 }
