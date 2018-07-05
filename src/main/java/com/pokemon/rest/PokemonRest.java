@@ -1,7 +1,7 @@
 package com.pokemon.rest;
 
-
 import com.pokemon.dto.PokemonDto;
+import com.pokemon.service.PokemonJdbcService;
 import com.pokemon.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.List;
-@RestController
 
+import static java.util.Arrays.asList;
+
+@RestController
 public class PokemonRest {
 
     private PokemonService pokemonService;
@@ -38,9 +40,9 @@ public class PokemonRest {
 
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/api/getAll")
     public List<PokemonDto> getPokemon() {
-        return null;
+        return asList(new PokemonDto());
     }
 
     //get ktory to wyswietli //getAllPokemons
