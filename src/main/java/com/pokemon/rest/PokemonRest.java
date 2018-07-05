@@ -28,7 +28,7 @@ public class PokemonRest {
         this.pokemonService = pokemonService;
     }
 
-    @RequestMapping("/pokemon")
+    @RequestMapping("/admin/pokemon")
     public PokemonDto getPokemon(@RequestParam(value = "id") int id) throws IOException {
 
         PokemonDto pokemonDto1 = pokemonService.getPokemonById(id);
@@ -40,9 +40,10 @@ public class PokemonRest {
 
     }
 
-    @GetMapping("/api/getAll")
+    @GetMapping("/user/getAll")
+
     public List<PokemonDto> getPokemon() {
-        return asList(new PokemonDto());
+       return asList(new PokemonDto());
     }
 
     //get ktory to wyswietli //getAllPokemons
