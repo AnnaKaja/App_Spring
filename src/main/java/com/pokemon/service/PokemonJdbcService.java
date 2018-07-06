@@ -1,16 +1,11 @@
 package com.pokemon.service;
-import com.pokemon.config.JdbcConfig;
+
 import com.pokemon.dto.PokemonDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class PokemonJdbcService {
@@ -31,12 +26,12 @@ public class PokemonJdbcService {
     }
 
     public PokemonDto getById(int id) {
-
         try {
-           return jdbcTemplate.queryForObject("SELECT id, name, weight, speciesUrl, speciesName FROM POKEMONS WHERE ID = " + id,
+
+            return jdbcTemplate.queryForObject("SELECT idPokemon, name, weight, speciesUrl, speciesName FROM POKEMONS WHERE ID = " + id,
                     (resultSet, i) -> {
                         PokemonDto pokemonDto = new PokemonDto();
-                        pokemonDto.setId(resultSet.getInt("id"));
+                        pokemonDto.setIdPokemon(resultSet.getInt("idPokemon"));
                         pokemonDto.setName(resultSet.getString("name"));
                         pokemonDto.setWeight(resultSet.getString("weight"));
                         pokemonDto.setSpeciesUrl(resultSet.getString("speciesUrl"));
@@ -47,6 +42,7 @@ public class PokemonJdbcService {
 
             //https://doc}s.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/data-access.html#jdbc
         }
-        return null;
+        return null
+                ;
     }
 }

@@ -6,10 +6,10 @@ CREATE TABLE users (
   email  VARCHAR(50)
 );
 
-CREATE TABLE pokemons(
-id INTEGER PRIMARY KEY,
-name VARCHAR(30),
-weight VARCHAR(5),
-speciesUrl VARCHAR(200),
-speciesName VARCHAR(30)
+CREATE TABLE pokemons (
+  idPokemon INTEGER PRIMARY KEY,
+  name VARCHAR(30),
+  weight  VARCHAR(5),
+  speciesUrl VARCHAR(200),
+  speciesName VARCHAR(30)
 );
